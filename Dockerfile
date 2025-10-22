@@ -1,10 +1,11 @@
 FROM node:22-alpine AS build
+FROM pnpm:9-alpine
 
 # Set the working directory
 WORKDIR /
 
 # Install dependencies
-RUN npm install
+RUN pnpm install
 
 # Expose the application port
 EXPOSE 25502
