@@ -8,7 +8,7 @@ services:
     ports:
       - "25502:25502"
     volumes:
-      - .:/usr/src/app
+      - .:/usr
     environment:
       - NODE_ENV=production
     networks:
