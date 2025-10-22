@@ -1,7 +1,7 @@
 FROM node:22-alpine AS build
 
 # Set the working directory
-WORKDIR /usr
+WORKDIR /
 
 # Install dependencies
 RUN npm install
