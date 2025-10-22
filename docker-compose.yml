@@ -7,6 +7,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - "25502:25502"
+    volumes:
+      - .:/
     environment:
       - NODE_ENV=production
     networks:
