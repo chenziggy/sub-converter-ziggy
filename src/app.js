@@ -26,7 +26,7 @@ app.post('/save', async(req, res) => {
   const urlRes = await fetch(url)
   const content = await urlRes.text()
   if (content.includes("No nodes were found!")) {
-    return res.status(400).send('No nodes were found!');
+    return res.status(200).send({ code: 401, msg: 'No nodes were found!'});
   }
 
   const fileName = `sub`; // 根据时间戳生成文件名
@@ -35,12 +35,13 @@ app.post('/save', async(req, res) => {
   // 将文本内容保存到文件
   fs.writeFile(filePath, content, (err) => {
     if (err) {
-    console.log("🚀 ~ err:", err)
-      return res.status(500).send('Error writing file');
+      return res.status(200).send({ code: 500, msg: 'Error writing file' });
     }
     // 返回文件的 URL 路径
-    res.status(200);
-    res.send(`File saved successfully. Access it at /sub`);
+    res.status(200).send({
+      code: 200,
+      msg: `File saved successfully. Access it at /sub`
+    });
   });
 });
 
